@@ -7,4 +7,13 @@
     sprites are drawn in order of declaration.
 -->
 <npcs>
+
+    <npc id="215">
+       <sprite>sprites/player_male_base.xml</sprite>
+       <!--<sprite>hairstyles/hairstyle02.xml|#F88017,FBB117</sprite>-->
+       <sprite>sprites/equipment/legs/chaps-male.xml</sprite>
+       <sprite>sprites/equipment/chest/cotton-male.xml|#222255,6666ff</sprite>
+       <sprite>sprites/equipment/head/bowler-hat-brown.xml|#16486e,498ec5,e4f2fc</sprite>
+       <sprite>sprites/equipment/feet/boots-male.xml|#623a34,f0c2b4</sprite>
+    </npc>
 </npcs>
