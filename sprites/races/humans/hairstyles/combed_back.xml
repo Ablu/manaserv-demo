@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<sprite>
+
+	<imageset name="base" src="sprites/races/humans/hairstyles/combed_back.png|W" width="40" height="40" />
+
+	<include file="races/humans/hairstyles/flat_ponytail.xml"/>
+
+</sprite>
