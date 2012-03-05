@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<configuration>
+ <option name="sqlite_database" value="mana.db"/>
+ <option name="serverPath" value="." />
+ <option name="worldDataPath" value="." />
+ <option name="log_statisticsFile" value="./manaserv.stats"/>
+ <option name="log_accountServerFile" value="./manaserv-account.log"/>
+ <option name="log_gameServerFile" value="./manaserv-game.log"/>
+ <option name="log_gameServerLogLevel" value="4"/>
+ <option name="log_accountServerLogLevel" value="4"/>
+ <option name="log_enableRotation" value="false"/>
+ <option name="log_maxFileSize" value="1024"/>
+ <option name="log_perDay" value="false"/>
+ <option name="net_password" value="changeMe"/>
+ <option name="net_accountHost" value="localhost"/>
+ <option name="net_accountListenToClientPort" value="9601"/>
+ <option name="net_accountListenToGamePort" value="9602"/> 
+ <option name="net_chatHost" value="localhost"/>
+ <option name="net_chatListenToClientPort" value="9603"/>
+ <option name="net_gameHost" value="localhost"/>
+ <option name="net_gameListenToClientPort" value="9604"/>
+ <option name="net_defaultUpdateHost" value="" />
+ <option name="net_clientDataUrl" value="" />
+ <option name="net_maxClients" value="1000"/>
+ <option name="account_allowRegister" value="1" />
+ <option name="account_denyRegisterReason"
+         value="The server administrator has disabled automatic registration!"/>
+ <option name="account_minEmailLength" value="7" />
+ <option name="account_maxEmailLength" value="128" />
+ <option name="account_minNameLength" value="4" />
+ <option name="account_maxNameLength" value="15" />
+ <option name="account_minPasswordLength" value="6" />
+ <option name="account_maxPasswordLength" value="25" />
+ <option name="account_maxCharacters" value="3" />
+ <option name="char_numHairStyles" value="17" />
+ <option name="char_numHairColors" value="11" />
+ <option name="char_numGenders" value="2" />
+ <option name="char_minNameLength" value="4" />
+ <option name="char_maxNameLength" value="25" />
+ <option name="char_startMap" value="1"/>
+ <option name="char_startX" value="100"/>
+ <option name="char_startY" value="100"/>
+ <option name="char_respawnMap" value="1"/>
+ <option name="char_respawnX" value="2176"/>
+ <option name="char_respawnY" value="1152"/>
+ <option name="char_defaultMap" value="1" />
+ <option name="game_visualRange" value="448"/>
+ <option name="game_floorItemDecayTime" value="0" />
+ <option name="game_hpRegenBreakAfterHit" value="0" />
+ <option name="game_defaultPvp" value="" />
+ <option name="command_defaultMuteLength" value="60" />
+ <option name="chat_maxChannelNameLength" value="15" />
+ <option name="mail_maxAttachments" value="3" />
+ <option name="mail_maxLetters" value="10" />
+</configuration>
