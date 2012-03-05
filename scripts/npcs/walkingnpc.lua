@@ -39,5 +39,5 @@ function gotoNextWaypoint(npc)
 
     local time = getWalkTime(npc,  wp.data[wp.currentIndex].x,
                              wp.data[wp.currentIndex].y)
-    schedule_in(time, function() wp.callback() end)
+    schedule_in(time, function() wp.callback(npc) end)
 end
