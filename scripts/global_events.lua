@@ -26,7 +26,7 @@ mana.on_character_death_accept(function(ch)
     -- restores 1 hp (in case you want to be less nice)
     -- mana.being_heal(ch, 1)
     -- warp the character to the respawn location
-    --mana.chr_warp(ch, 1, 815, 100)
+    mana.chr_warp(ch, 1, 2176, 1152)
 end)
 
 
