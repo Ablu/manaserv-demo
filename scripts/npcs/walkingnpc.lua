@@ -22,6 +22,8 @@ local function getWalkTime(being, x, y)
 end
 
 function setWaypoints(npc, points, walkspeed, callback)
+    assert(npc ~= nil, "nil npc handle")
+    assert(points ~= nil, "nil point table")
     waypoints[npc] = {}
     waypoints[npc].data = points
     waypoints[npc].currentIndex = 1
@@ -30,7 +32,7 @@ function setWaypoints(npc, points, walkspeed, callback)
 end
 
 function gotoNextWaypoint(npc)
-    assert(waypoints[npc] ~= nil)
+    assert(waypoints[npc] ~= nil, "nil npc handle")
     local wp = waypoints[npc]
     wp.currentIndex = (wp.currentIndex % #wp.data) + 1
     mana.being_walk(npc, wp.data[wp.currentIndex].x, wp.data[wp.currentIndex].y,
