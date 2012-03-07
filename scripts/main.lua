@@ -9,3 +9,6 @@
 require "scripts/global_events"
 require "scripts/special_actions"
 require "scripts/crafting"
+
+-- Server specific requires
+require "scripts/global_functions"

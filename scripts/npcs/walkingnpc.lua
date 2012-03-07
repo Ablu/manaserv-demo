@@ -9,7 +9,6 @@
     callback: function that should get called as soon the being reaches a point
 
 --]]
-require "scripts/constants"
 
 local waypoints = {}
 

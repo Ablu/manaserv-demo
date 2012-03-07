@@ -11,19 +11,18 @@ local function dumbFarmerTalk(npc, ch)
 end
 
 local dumb_farmer_way = { 
-        {x=27 * TILESIZE + TILESIZE / 2, y= 26 * TILESIZE + TILESIZE / 2}, 
-        {x=45 * TILESIZE + TILESIZE / 2, y= 26 * TILESIZE + TILESIZE / 2}, 
-        {x=45 * TILESIZE + TILESIZE / 2, y= 37 * TILESIZE + TILESIZE / 2}, 
-        {x=44 * TILESIZE + TILESIZE / 2, y= 37 * TILESIZE + TILESIZE / 2}, 
-        {x=44 * TILESIZE + TILESIZE / 2, y= 51 * TILESIZE + TILESIZE / 2}, 
-        {x=35 * TILESIZE + TILESIZE / 2, y= 51 * TILESIZE + TILESIZE / 2}, 
-        {x=27 * TILESIZE + TILESIZE / 2, y= 51 * TILESIZE + TILESIZE / 2}, 
-        {x=27 * TILESIZE + TILESIZE / 2, y= 35 * TILESIZE + TILESIZE / 2}, 
-        {x=27 * TILESIZE + TILESIZE / 2, y= 26 * TILESIZE + TILESIZE / 2}} 
+        {x=tileToPixel(27), y=tileToPixel(26)}, 
+        {x=tileToPixel(45), y=tileToPixel(26)}, 
+        {x=tileToPixel(45), y=tileToPixel(37)}, 
+        {x=tileToPixel(44), y=tileToPixel(37)}, 
+        {x=tileToPixel(44), y=tileToPixel(51)}, 
+        {x=tileToPixel(35), y=tileToPixel(51)}, 
+        {x=tileToPixel(27), y=tileToPixel(51)}, 
+        {x=tileToPixel(27), y=tileToPixel(35)}, 
+        {x=tileToPixel(27), y=tileToPixel(26)}} 
 
 local dumb_farmer = create_npc("Dumb Farmer", 215, GENDER_MALE,
-                               26 * TILESIZE + TILESIZE / 2,
-                               26 *           TILESIZE + TILESIZE / 2,
+                               tileToPixel(26), tileToPixel(26),
                                dumbFarmerTalk, nil)
 setWaypoints(dumb_farmer, dumb_farmer_way, 3, gotoNextWaypoint)
 gotoNextWaypoint(dumb_farmer)
