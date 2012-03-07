@@ -7,22 +7,29 @@
 require "scripts/npcs/walkingnpc"
 
 local function dumbFarmerTalk(npc, ch)
-    --do_message(npc, ch, "Hello!")
+    stopWalking(npc)
+    do_message(npc, ch, "Hello!")
+    continueWalking(npc)
 end
 
-local dumb_farmer_way = { 
-        {x=tileToPixel(27), y=tileToPixel(26)}, 
-        {x=tileToPixel(45), y=tileToPixel(26)}, 
-        {x=tileToPixel(45), y=tileToPixel(37)}, 
-        {x=tileToPixel(44), y=tileToPixel(37)}, 
-        {x=tileToPixel(44), y=tileToPixel(51)}, 
-        {x=tileToPixel(35), y=tileToPixel(51)}, 
-        {x=tileToPixel(27), y=tileToPixel(51)}, 
-        {x=tileToPixel(27), y=tileToPixel(35)}, 
-        {x=tileToPixel(27), y=tileToPixel(26)}} 
+local function dumbFarmerWaypointReached(npc)
+    --mana.being_set_direction(npc, math.random (1,4))
+    gotoNextWaypoint(npc)
+end
+
+local dumb_farmer_way = {
+        {x=tileToPixel(27), y=tileToPixel(26)},
+        {x=tileToPixel(45), y=tileToPixel(26)},
+        {x=tileToPixel(45), y=tileToPixel(37)},
+        {x=tileToPixel(44), y=tileToPixel(37)},
+        {x=tileToPixel(44), y=tileToPixel(51)},
+        {x=tileToPixel(35), y=tileToPixel(51)},
+        {x=tileToPixel(27), y=tileToPixel(51)},
+        {x=tileToPixel(27), y=tileToPixel(35)},
+        {x=tileToPixel(27), y=tileToPixel(26)}}
 
 local dumb_farmer = create_npc("Dumb Farmer", 215, GENDER_MALE,
                                tileToPixel(26), tileToPixel(26),
                                dumbFarmerTalk, nil)
-setWaypoints(dumb_farmer, dumb_farmer_way, 3, gotoNextWaypoint)
+setWaypoints(dumb_farmer, dumb_farmer_way, 3, dumbFarmerWaypointReached)
 gotoNextWaypoint(dumb_farmer)

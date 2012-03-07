@@ -13,8 +13,7 @@
 local waypoints = {}
 
 local function getWalkTime(being, x, y)
-    local speed = mana.being_get_modified_attribute(being,
-                                                    ATTRIBUTE_MOVEMENT_SPEED)
+    local speed = mana.being_get_modified_attribute(being, ATTRIBUTE_MOVEMENT_SPEED)
     local dist = mana.get_distance(mana.posX(being), mana.posY(being),
                                    x, y) / TILESIZE
     return dist / speed
@@ -40,5 +39,30 @@ function gotoNextWaypoint(npc)
 
     local time = getWalkTime(npc,  wp.data[wp.currentIndex].x,
                              wp.data[wp.currentIndex].y)
-    schedule_in(time, function() wp.callback(npc) end)
+    schedule_in(time, function() walkingCallback(npc) end)
+end
+
+function stopWalking(npc)
+    mana.being_set_action(npc, ACTION_STAND)
+    mana.being_walk(npc, mana.posX(npc), mana.posY(npc))
+end
+
+function continueWalking(npc)
+    assert(waypoints[npc] ~= nil, "nil npc handle")
+    local wp = waypoints[npc]
+    mana.being_walk(npc, wp.data[wp.currentIndex].x, wp.data[wp.currentIndex].y,
+                mana.being_get_modified_attribute(being,
+                                                  ATTRIBUTE_MOVEMENT_SPEED))
+
+    local time = getWalkTime(npc,  wp.data[wp.currentIndex].x,
+                             wp.data[wp.currentIndex].y)
+    schedule_in(time, function() walkingCallback(npc) end)
+end
+
+function walkingCallback(npc)
+    local wp = waypoints[npc]
+    if wp.data[wp.currentIndex].x == mana.posX(npc)
+            and wp.data[wp.currentIndex].y == mana.posY(npc) then
+        wp.callback(npc)
+    end
 end
