@@ -26,6 +26,7 @@ function setWaypoints(npc, points, walkspeed, callback)
     waypoints[npc].data = points
     waypoints[npc].currentIndex = 1
     waypoints[npc].callback = callback
+    waypoints[npc].stoppedBy = {}
     mana.being_set_base_attribute(npc, ATTRIBUTE_MOVEMENT_SPEED, walkspeed)
 end
 
@@ -42,17 +43,23 @@ function gotoNextWaypoint(npc)
     schedule_in(time, function() walkingCallback(npc) end)
 end
 
-function stopWalking(npc)
-    mana.being_set_action(npc, ACTION_STAND)
+function orderStopWalking(npc, ch)
+    on_remove(ch, function() orderContinueWalking(npc, ch) end)
+    local wp = waypoints[npc]
+    wp.stoppedBy[ch] = true
     mana.being_walk(npc, mana.posX(npc), mana.posY(npc))
 end
 
-function continueWalking(npc)
+function orderContinueWalking(npc, ch)
     assert(waypoints[npc] ~= nil, "nil npc handle")
     local wp = waypoints[npc]
+    wp.stoppedBy[ch] = nil
+
+    if next(wp.stoppedBy) then
+        return
+    end
     mana.being_walk(npc, wp.data[wp.currentIndex].x, wp.data[wp.currentIndex].y,
-                mana.being_get_modified_attribute(being,
-                                                  ATTRIBUTE_MOVEMENT_SPEED))
+                mana.being_get_modified_attribute(being, ATTRIBUTE_MOVEMENT_SPEED))
 
     local time = getWalkTime(npc,  wp.data[wp.currentIndex].x,
                              wp.data[wp.currentIndex].y)
