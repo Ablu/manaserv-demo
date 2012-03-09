@@ -7,10 +7,10 @@
 require "scripts/npcs/walkingnpc"
 
 local function dumbFarmerTalk(npc, ch)
-    stopWalking(npc, ch)
+    stopRoute(npc, ch)
     do_message(npc, ch, "Hello!")
     do_choice(npc, ch, "Hi!") --let it here until bjorn fixed the do_message to be synchronous
-    continueWalking(npc, ch)
+    continueRoute(npc, ch)
 end
 
 local function dumbFarmerWaypointReached(npc)

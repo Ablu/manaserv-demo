@@ -61,7 +61,7 @@ end
 function stopRoute(npc, ch)
     local wp = waypoints[npc]
     if ch then
-        on_remove(ch, function() orderContinueWalking(npc, ch) end)
+        on_remove(ch, function() continueRoute(npc, ch) end)
         wp.stoppedBy[ch] = true
     end
     mana.being_walk(npc, mana.posX(npc), mana.posY(npc))
@@ -98,7 +98,8 @@ end
 function walkingCallback(npc)
     local wp = waypoints[npc]
     if wp.data[wp.currentIndex].x == mana.posX(npc)
-            and wp.data[wp.currentIndex].y == mana.posY(npc) then
+            and wp.data[wp.currentIndex].y == mana.posY(npc)
+            and not next(wp.stoppedBy) then
         wp.callback(npc)
     end
 end
