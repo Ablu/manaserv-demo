@@ -4,6 +4,7 @@
 
 --]]
 
-atinit(function() 
+atinit(function()
+    require "scripts/npcs/farmersbartender"
 end)
 

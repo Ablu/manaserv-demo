@@ -58,4 +58,12 @@
     </item>
 
     <!-- Define items below -->
+    <item id="10"
+        image="usable/beer.png"
+        name="Beer"
+        description="A fresh beer."
+        type="usable"
+        hp="200"
+        mp="5"
+        weight="10"/>
 </items>
