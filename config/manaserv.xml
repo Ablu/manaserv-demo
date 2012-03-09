@@ -38,8 +38,8 @@
  <option name="char_minNameLength" value="4" />
  <option name="char_maxNameLength" value="25" />
  <option name="char_startMap" value="1"/>
- <option name="char_startX" value="100"/>
- <option name="char_startY" value="100"/>
+ <option name="char_startX" value="2176"/>
+ <option name="char_startY" value="1152"/>
  <option name="char_respawnMap" value="1"/>
  <option name="char_respawnX" value="2176"/>
  <option name="char_respawnY" value="1152"/>
