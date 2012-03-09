@@ -7,10 +7,10 @@
 require "scripts/npcs/walkingnpc"
 
 local function dumbFarmerTalk(npc, ch)
-    orderStopWalking(npc, ch)
+    stopWalking(npc, ch)
     do_message(npc, ch, "Hello!")
     do_choice(npc, ch, "Hi!") --let it here until bjorn fixed the do_message to be synchronous
-    orderContinueWalking(npc, ch)
+    continueWalking(npc, ch)
 end
 
 local function dumbFarmerWaypointReached(npc)
@@ -19,14 +19,14 @@ local function dumbFarmerWaypointReached(npc)
 end
 
 local dumb_farmer_way = {
-        {x=tileToPixel(27), y=tileToPixel(26)},
+        {x=tileToPixel(27), y=tileToPixel(26), wait=5},
         {x=tileToPixel(45), y=tileToPixel(26)},
         {x=tileToPixel(45), y=tileToPixel(37)},
         {x=tileToPixel(44), y=tileToPixel(37)},
         {x=tileToPixel(44), y=tileToPixel(51)},
         {x=tileToPixel(35), y=tileToPixel(51)},
         {x=tileToPixel(27), y=tileToPixel(51)},
-        {x=tileToPixel(27), y=tileToPixel(35)},
+        {x=tileToPixel(27), y=tileToPixel(35), wait=3},
         {x=tileToPixel(27), y=tileToPixel(26)}}
 
 local dumb_farmer = create_npc("Dumb Farmer", 215, GENDER_MALE,
