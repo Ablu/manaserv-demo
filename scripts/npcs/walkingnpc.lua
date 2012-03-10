@@ -113,7 +113,6 @@ end
 -- This also handles the user callback
 function walkingCallback(npc)
     local wp = waypoints[npc]
-    mana.being_say(npc, "walkingCallback")
     -- check if the npc already reched the waypoint.
     -- This may be not the case, if the npc was hindered by players to walk there.
     if wp.data[wp.currentIndex].x == mana.posX(npc) and wp.data[wp.currentIndex].y == mana.posY(npc) then

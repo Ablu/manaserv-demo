@@ -7,8 +7,10 @@
 
 require "scripts/npcs/walkingnpc"
 
+local bartenderExplainingQuest = false -- is set to true during the whole basement showing and killing, until the player has finished the quest
 local barTenderWaitingInBasement = false
 local maggotskilled = 0
+local bartenderKnowThePlayer = nil -- will contain a random variable, the player will also carry that variable to identify himself to the bartender again in the basement
 
 local function bartenderTalk(npc, ch)
     -- either in  bar -> then talk normally
@@ -57,6 +59,8 @@ local function bartenderTalk(npc, ch)
                 "Are you ready?\n")
             res = do_choice(npc, ch, "Ok let's go!", "Cleaning! Are you fucking kidding me?")
             if res == 1 then
+                bartenderKnowThePlayer = math.random()
+                mana.chr_set_quest(ch, "bartenderMaggotFight", bartenderKnowThePlayer)
                 gotoNextWaypoint(npc)
             end
         end
@@ -65,7 +69,7 @@ local function bartenderTalk(npc, ch)
 
     -- standing in the basement waiting for the player to talk to me
     elseif mana.posX(npc) == tileToPixel(22) and mana.posY(npc) == tileToPixel(57) then
-        --[[if (one/the) correct player then
+        if get_quest_var(ch, "bartenderMaggotFight") == bartenderKnowThePlayer then
             for i = 1,10 do
                 mob = mana.monster_create( id, x, y)
                 on_remove(ch, function() mana.monster_remove(mob) end)
@@ -76,7 +80,7 @@ local function bartenderTalk(npc, ch)
                 "I'll be waiting upstairs for you!")
 
             gotoNextWaypoint(npc)
-        end ]]--
+        end
         return
     end
 
@@ -90,19 +94,15 @@ local function bartenderTalk(npc, ch)
 end
 
 local function bartenderWaypointReached(npc)
+    mana.being_say(npc, "bartenderWaypointReached")
     if mana.posX(npc) == tileToPixel(21) and mana.posY(npc) == tileToPixel(23) then
     -- step down
-        mana.npc_disable(npc)
-        mana.npc_enable(npc, tileToPixel(22), tileToPixel(53))
+        mana.npc_warp(npc, tileToPixel(22), tileToPixel(53))
         gotoNextWaypoint(npc)
-
     elseif mana.posX(npc) == tileToPixel(22) and mana.posY(npc) == tileToPixel(53) then
     --step up
-        mana.npc_disable(npc)
-        mana.npc_enable(npc, tileToPixel(21), tileToPixel(21))
+        mana.npc_warp(npc, tileToPixel(21), tileToPixel(21))
         gotoNextWaypoint(npc)
-
-
     elseif mana.posX(npc) == tileToPixel(22) and mana.posY(npc) == tileToPixel(57) then
     -- end point in basement reached:
         -- wait a certain time until the player talks to me, else leave
@@ -130,8 +130,8 @@ local bar_tender = create_npc("Bar Tender", 216, GENDER_MALE,
 local bar_tender_way = {
     --first part (way down)
     { x=tileToPixel(26), y=tileToPixel(18) },
-    { x=tileToPixel(26), y=tileToPixel(23) },
-    { x=tileToPixel(23), y=tileToPixel(23) },
+    { x=tileToPixel(26), y=tileToPixel(23.5) },
+    { x=tileToPixel(23), y=tileToPixel(23.5) },
     { x=tileToPixel(23), y=tileToPixel(21) },
     { x=tileToPixel(21), y=tileToPixel(21) },
     { x=tileToPixel(21), y=tileToPixel(23) }, -- on the stairs in the bar
@@ -140,7 +140,7 @@ local bar_tender_way = {
     { x=tileToPixel(21), y=tileToPixel(21) },
     { x=tileToPixel(23), y=tileToPixel(21) },
     { x=tileToPixel(23), y=tileToPixel(23) },
-    { x=tileToPixel(26), y=tileToPixel(23) },
+    { x=tileToPixel(26), y=tileToPixel(24) },
     { x=tileToPixel(26), y=tileToPixel(18) },
     --second part way up is reverse to way down
     { x=tileToPixel(28), y=tileToPixel(18) }}-- starting point reached again
