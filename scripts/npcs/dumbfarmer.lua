@@ -20,6 +20,7 @@ end
 
 local dumb_farmer_way = {
         {x=tileToPixel(27), y=tileToPixel(26), wait=5},
+        {x=tileToPixel(36), y=tileToPixel(26)},
         {x=tileToPixel(45), y=tileToPixel(26)},
         {x=tileToPixel(45), y=tileToPixel(37)},
         {x=tileToPixel(44), y=tileToPixel(37)},
