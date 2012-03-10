@@ -134,9 +134,11 @@ local bar_tender_way = {
     { x=tileToPixel(23), y=tileToPixel(23.5) },
     { x=tileToPixel(23), y=tileToPixel(21) },
     { x=tileToPixel(21), y=tileToPixel(21) },
+
     { x=tileToPixel(21), y=tileToPixel(23) }, -- on the stairs in the bar
     { x=tileToPixel(22), y=tileToPixel(57) }, -- endpoint in basement
     { x=tileToPixel(22), y=tileToPixel(53) }, -- on stairs in basement
+
     { x=tileToPixel(21), y=tileToPixel(21) },
     { x=tileToPixel(23), y=tileToPixel(21) },
     { x=tileToPixel(23), y=tileToPixel(23) },

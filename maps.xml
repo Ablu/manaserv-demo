@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <maps>
     <map id="1" name="farm1" />
-    <map id="2" name="farm1_indoor" />
+    <map id="2" name="farm1_indoor1" />
+    <map id="3" name="farm1_indoor2" />
+    <map id="4" name="farm1_indoor3" />
 </maps>
