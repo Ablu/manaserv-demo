@@ -1,0 +1,5 @@
+TODO list what is needed for the demo
+
+- do_message should be synchronous (dumbfarmer, bartender)
+- npc warping/moving (bartender)
+-

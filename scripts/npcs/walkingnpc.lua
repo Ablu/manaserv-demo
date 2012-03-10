@@ -88,7 +88,7 @@ function continueRoute(npc, ch)
     end
 
     mana.being_walk(npc, wp.data[wp.currentIndex].x, wp.data[wp.currentIndex].y,
-                mana.being_get_modified_attribute(being, ATTRIBUTE_MOVEMENT_SPEED))
+                mana.being_get_modified_attribute(npc, ATTRIBUTE_MOVEMENT_SPEED))
 
     local time = getWalkTime(npc,  wp.data[wp.currentIndex].x,
                              wp.data[wp.currentIndex].y)

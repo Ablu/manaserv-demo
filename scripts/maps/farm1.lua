@@ -6,6 +6,6 @@
 
 atinit(function()
     require "scripts/npcs/dumbfarmer"
-    require "scripts/npcs/fightingtest"
+    --require "scripts/npcs/fightingtest"
 end)
 
