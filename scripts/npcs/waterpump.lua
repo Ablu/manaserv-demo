@@ -11,7 +11,7 @@ local function waterpumpTalk(npc, ch)
     mana.chr_inv_change(ch, "Empty Bottle", -amount, "Bottle of Water", amount)
 end
 
-local water_pump = create_npc("Water Pump", 203, GENDER_UNSPECIFIED,
-                               tileToPixel(64), tileToPixel(41),
-                               waterpumpTalk, nil)
+local water_pump = npc_create("Water Pump", 203, GENDER_UNSPECIFIED,
+                              tileToPixel(64), tileToPixel(41),
+                              waterpumpTalk, nil)
 

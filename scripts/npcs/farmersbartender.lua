@@ -37,7 +37,7 @@ local function bartenderTalk(npc, ch)
     res = do_choice(npc, ch, choices)
 
     if res == 1 then
-        local buycase = mana.npc_trade(npc, ch, false,
+        local buycase = npc_trade(npc, ch, false,
                                         { {"Beer", 3, 10}, {"Empty Bottle", 5, 5} })
         if buycase == 0 then
             say("What do you want to buy?")
@@ -52,7 +52,7 @@ local function bartenderTalk(npc, ch)
         say("Actually there is something you can do:")
         if bartenderNeedsWater > 0 then
             say("I need a bottle of water to keep my flowers alive. Could you bring me a bottle of water?")
-            mana.chr_set_quest(ch, "bartenderNeedsWater", "true")
+            chr_set_quest(ch, "bartenderNeedsWater", "true")
             bartenderNeedsWater = bartenderNeedsWater - 1
             return
         end
@@ -65,7 +65,7 @@ local function bartenderTalk(npc, ch)
     elseif res > 0 then
         if res == waterquest then
             say("Very kind of you to help me with the water for my flower")
-            mana.chr_give_exp(ch, "Farming", 1)
+            chr_give_exp(ch, "Farming", 1)
         end
     end
 end
@@ -73,7 +73,7 @@ end
 
 local function bartenderWaypointReached(npc, id)
     if id == "flowers" and math.random() < 0.25 then
-        mana.being_say(npc, "Oo! I should water the flower again!")
+        being_say(npc, "Oo! I should water the flower again!")
         bartenderNeedsWater = 3
     end
     gotoNextWaypoint(npc)
