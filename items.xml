@@ -66,4 +66,17 @@
         hp="200"
         mp="5"
         weight="10"/>
+    <item id="11"
+        image="generic/bottle-empty.png"
+        name="Empty Bottle"
+        description="An empty bottle."
+        type="generic"
+        weight="1"/>
+    <item id="12"
+        image="usable/water.png"
+        name="Bottle of Water"
+        description="A bottle of water."
+        type="usable"
+        hp="250"
+        weight="10"/>
 </items>

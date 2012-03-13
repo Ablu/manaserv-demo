@@ -52,6 +52,7 @@ end
 local function on_chr_birth(ch)
     -- this message is shown on first login.
     chat_message(0, ch, "And so your adventure begins...")
+    chr_money_change(ch, 20)
 end
 
 -- This function is called when a character logs into the game. This can,

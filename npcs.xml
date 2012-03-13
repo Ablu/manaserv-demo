@@ -8,6 +8,8 @@
 -->
 <npcs>
 
+    <npc id="203"><sprite>npc-woodenpump.xml</sprite></npc><!-- Woodenpump with drippy water -->
+
     <npc id="215"> <!--  dumb farmer on farm1 -->
         <sprite>races/humans/human_male_base.xml</sprite>
         <sprite>hairstyles/hairstyle02.xml|#F88017,FBB117</sprite>
@@ -18,6 +20,13 @@
     </npc>
 
     <npc id="216">   <!--  bar tender in farm1_indoor  -->
+       <sprite>races/humans/human_male_base.xml</sprite>
+       <sprite>hairstyles/hairstyle02.xml|#F88017,FBB117</sprite>
+       <sprite>equipment/legs/chaps-male.xml</sprite>
+       <sprite>equipment/chest/cotton-male.xml|#222255,6666ff</sprite>
+    </npc>
+
+    <npc id="217">   <!--  cleaner in basement -->
        <sprite>races/humans/human_male_base.xml</sprite>
        <sprite>hairstyles/hairstyle02.xml|#F88017,FBB117</sprite>
        <sprite>equipment/legs/chaps-male.xml</sprite>

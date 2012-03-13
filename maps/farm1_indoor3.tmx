@@ -183,6 +183,11 @@
     <property name="dest_y" value="1424" type="string"/>
    </properties>
   </object>
+  <object uniqueID="2" name="External Map Events" type="SCRIPT" x="32" y="32" width="128" height="32">
+   <properties>
+    <property name="FILENAME" value="scripts/maps/farm1_indoor3.lua" type="string"/>
+   </properties>
+  </object>
  </objectgroup>
  <layer name="Collision" width="50" height="50">
   <data encoding="csv">

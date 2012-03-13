@@ -18,5 +18,6 @@
     </set>
     <set name="Crafts">
         <skill id="300" name="Craft Example" />
+        <skill id="301" name="Farming" />
     </set>
 </skills>

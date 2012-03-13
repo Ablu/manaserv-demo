@@ -178,7 +178,7 @@
   </object>
   <object uniqueID="2" name="External Map Events" type="SCRIPT" x="32" y="32" width="128" height="32">
    <properties>
-    <property name="FILENAME" value="scripts/maps/farm1_indoor.lua" type="string"/>
+    <property name="FILENAME" value="scripts/maps/farm1_indoor1.lua" type="string"/>
    </properties>
   </object>
  </objectgroup>

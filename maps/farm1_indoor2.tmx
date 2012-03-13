@@ -198,6 +198,18 @@
     <property name="dest_y" value="720" type="string"/>
    </properties>
   </object>
+  <object uniqueID="1" name="External Map Events" type="SCRIPT" x="32" y="32" width="128" height="32">
+   <properties>
+    <property name="FILENAME" value="scripts/maps/farm1_indoor2.lua" type="string"/>
+   </properties>
+  </object>
+  <object uniqueID="2" x="608" y="640" width="320" height="416">
+   <properties>
+    <property name="MAX_BEINGS" value="2" type="string"/>
+    <property name="MONSTER_ID" value="0" type="string"/>
+    <property name="SPAWN_RATE" value="1" type="string"/>
+   </properties>
+  </object>
  </objectgroup>
  <layer name="Collision" width="50" height="55">
   <data encoding="csv">

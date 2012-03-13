@@ -43,13 +43,12 @@ function setWaypoints(npc, points, walkspeed, callback)
     being_set_base_attribute(npc, ATTRIBUTE_MOVEMENT_SPEED, walkspeed)
 end
 
-function gotoNextWaypoint(npc)
-    assert(waypoints[npc] ~= nil, "nil npc handle")
+function gotoWaypoint(npc)
     local wp = waypoints[npc]
+
     wp.currentIndex = (wp.currentIndex % #wp.data) + 1
     being_walk(npc, wp.data[wp.currentIndex].x, wp.data[wp.currentIndex].y,
-                    being_get_modified_attribute(npc,
-                                                      ATTRIBUTE_MOVEMENT_SPEED))
+               being_get_modified_attribute(npc, ATTRIBUTE_MOVEMENT_SPEED))
 
     local addtime = 0
     if wp.data[wp.currentIndex].wait then
@@ -60,6 +59,16 @@ function gotoNextWaypoint(npc)
                                              wp.data[wp.currentIndex].y)
 
     schedule_in(time, function() walkingCallback(npc) end)
+end
+
+function gotoNextWaypoint(npc)
+    assert(waypoints[npc] ~= nil, "nil npc handle")
+    local wp = waypoints[npc]
+    wp.currentIndex = (wp.currentIndex % #wp.data) + 1
+    mana.being_walk(npc, wp.data[wp.currentIndex].x, wp.data[wp.currentIndex].y,
+                    mana.being_get_modified_attribute(npc,
+                                                      ATTRIBUTE_MOVEMENT_SPEED))
+    gotoWaypoint(npc)
 end
 
 
@@ -101,10 +110,7 @@ function continueRoute(npc, ch)
 
     being_walk(npc, wp.data[wp.currentIndex].x, wp.data[wp.currentIndex].y,
                 being_get_modified_attribute(npc, ATTRIBUTE_MOVEMENT_SPEED))
-
-    local time = getWalkTime(npc,  wp.data[wp.currentIndex].x,
-                             wp.data[wp.currentIndex].y)
-    schedule_in(time, function() walkingCallback(npc) end)
+    gotoWaypoint(npc)
 end
 
 
@@ -123,11 +129,6 @@ function walkingCallback(npc)
         end
     else
         -- if the  npc is not there, just try again to walk to the destination.
-        being_walk(npc, wp.data[wp.currentIndex].x, wp.data[wp.currentIndex].y,
-                    being_get_modified_attribute(npc, ATTRIBUTE_MOVEMENT_SPEED))
-
-        local time = getWalkTime(npc, wp.data[wp.currentIndex].x,
-                                      wp.data[wp.currentIndex].y)
-        schedule_in(time, function() walkingCallback(npc) end)
+        gotoWaypoint(npc)
     end
 end
