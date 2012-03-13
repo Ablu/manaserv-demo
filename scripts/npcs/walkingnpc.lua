@@ -13,8 +13,8 @@
 local waypoints = {}
 
 local function getWalkTime(being, x, y)
-    local speed = mana.being_get_modified_attribute(being, ATTRIBUTE_MOVEMENT_SPEED)
-    local dist = mana.get_distance(mana.posX(being), mana.posY(being),
+    local speed = being_get_modified_attribute(being, ATTRIBUTE_MOVEMENT_SPEED)
+    local dist = get_distance(posX(being), posY(being),
                                    x, y) / TILESIZE
     return dist / speed
 end
@@ -40,15 +40,15 @@ function setWaypoints(npc, points, walkspeed, callback)
     waypoints[npc].currentIndex = 1
     waypoints[npc].callback = callback
     waypoints[npc].stoppedBy = {}
-    mana.being_set_base_attribute(npc, ATTRIBUTE_MOVEMENT_SPEED, walkspeed)
+    being_set_base_attribute(npc, ATTRIBUTE_MOVEMENT_SPEED, walkspeed)
 end
 
 function gotoNextWaypoint(npc)
     assert(waypoints[npc] ~= nil, "nil npc handle")
     local wp = waypoints[npc]
     wp.currentIndex = (wp.currentIndex % #wp.data) + 1
-    mana.being_walk(npc, wp.data[wp.currentIndex].x, wp.data[wp.currentIndex].y,
-                    mana.being_get_modified_attribute(npc,
+    being_walk(npc, wp.data[wp.currentIndex].x, wp.data[wp.currentIndex].y,
+                    being_get_modified_attribute(npc,
                                                       ATTRIBUTE_MOVEMENT_SPEED))
 
     local addtime = 0
@@ -77,7 +77,7 @@ function stopRoute(npc, ch)
         on_remove(ch, function() continueRoute(npc, ch) end)
         wp.stoppedBy[ch] = true
     end
-    mana.being_walk(npc, mana.posX(npc), mana.posY(npc))
+    being_walk(npc, posX(npc), posY(npc))
 end
 
 --- Makes an npc continue walking
@@ -99,8 +99,8 @@ function continueRoute(npc, ch)
         end
     end
 
-    mana.being_walk(npc, wp.data[wp.currentIndex].x, wp.data[wp.currentIndex].y,
-                mana.being_get_modified_attribute(npc, ATTRIBUTE_MOVEMENT_SPEED))
+    being_walk(npc, wp.data[wp.currentIndex].x, wp.data[wp.currentIndex].y,
+                being_get_modified_attribute(npc, ATTRIBUTE_MOVEMENT_SPEED))
 
     local time = getWalkTime(npc,  wp.data[wp.currentIndex].x,
                              wp.data[wp.currentIndex].y)
@@ -115,7 +115,7 @@ function walkingCallback(npc)
     local wp = waypoints[npc]
     -- check if the npc already reched the waypoint.
     -- This may be not the case, if the npc was hindered by players to walk there.
-    if wp.data[wp.currentIndex].x == mana.posX(npc) and wp.data[wp.currentIndex].y == mana.posY(npc) then
+    if wp.data[wp.currentIndex].x == posX(npc) and wp.data[wp.currentIndex].y == posY(npc) then
         if not next(wp.stoppedBy) then
             -- In case the npc is being talked to at the moment, we will drop,
             -- this current callback, since it will be rescheduled again after talking is finished.
@@ -123,8 +123,8 @@ function walkingCallback(npc)
         end
     else
         -- if the  npc is not there, just try again to walk to the destination.
-        mana.being_walk(npc, wp.data[wp.currentIndex].x, wp.data[wp.currentIndex].y,
-                    mana.being_get_modified_attribute(npc, ATTRIBUTE_MOVEMENT_SPEED))
+        being_walk(npc, wp.data[wp.currentIndex].x, wp.data[wp.currentIndex].y,
+                    being_get_modified_attribute(npc, ATTRIBUTE_MOVEMENT_SPEED))
 
         local time = getWalkTime(npc, wp.data[wp.currentIndex].x,
                                       wp.data[wp.currentIndex].y)

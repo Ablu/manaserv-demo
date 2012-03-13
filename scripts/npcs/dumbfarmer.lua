@@ -14,7 +14,7 @@ local function dumbFarmerTalk(npc, ch)
 end
 
 local function dumbFarmerWaypointReached(npc)
-    --mana.being_set_direction(npc, math.random (1,4))
+    --being_set_direction(npc, math.random (1,4))
     gotoNextWaypoint(npc)
 end
 
@@ -30,7 +30,7 @@ local dumb_farmer_way = {
         {x=tileToPixel(27), y=tileToPixel(35), wait=3},
         {x=tileToPixel(27), y=tileToPixel(26)}}
 
-local dumb_farmer = create_npc("Dumb Farmer", 215, GENDER_MALE,
+local dumb_farmer = mana.npc_create("Dumb Farmer", 215, GENDER_MALE,
                                tileToPixel(26), tileToPixel(26),
                                dumbFarmerTalk, nil)
 setWaypoints(dumb_farmer, dumb_farmer_way, 3, dumbFarmerWaypointReached)

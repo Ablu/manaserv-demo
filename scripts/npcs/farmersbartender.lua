@@ -22,7 +22,7 @@ local function bartenderTalk(npc, ch)
 
 
     -- standing at the bar, normal talk
-    if mana.posX(npc) == tileToPixel(28) and mana.posY(npc) == tileToPixel(18) then
+    if posX(npc) == tileToPixel(28) and posY(npc) == tileToPixel(18) then
 
         say("Welcome on our farm!")
         local tradestrings = { "Do you have some beer?", "I need some tools...", "Interested in doing a deal?", "Show me your stuff", "Would you mind selling me some stuff?" }
@@ -35,7 +35,7 @@ local function bartenderTalk(npc, ch)
                                     leavestrings[math.random(#leavestrings)])
 
         if res == 1 then
-            local buycase = mana.npc_trade(npc, ch, false,
+            local buycase = npc_trade(npc, ch, false,
                                             { {"Beer", 10, 10} })
             if buycase == 0 then
                 say("What do you want to buy?")
@@ -60,7 +60,7 @@ local function bartenderTalk(npc, ch)
             res = do_choice(npc, ch, "Ok let's go!", "Cleaning! Are you fucking kidding me?")
             if res == 1 then
                 bartenderKnowThePlayer = math.random()
-                mana.chr_set_quest(ch, "bartenderMaggotFight", bartenderKnowThePlayer)
+                chr_set_quest(ch, "bartenderMaggotFight", bartenderKnowThePlayer)
                 gotoNextWaypoint(npc)
             end
         end
@@ -68,11 +68,11 @@ local function bartenderTalk(npc, ch)
         return
 
     -- standing in the basement waiting for the player to talk to me
-    elseif mana.posX(npc) == tileToPixel(22) and mana.posY(npc) == tileToPixel(57) then
+    elseif posX(npc) == tileToPixel(22) and posY(npc) == tileToPixel(57) then
         if get_quest_var(ch, "bartenderMaggotFight") == bartenderKnowThePlayer then
             for i = 1,10 do
-                mob = mana.monster_create( id, x, y)
-                on_remove(ch, function() mana.monster_remove(mob) end)
+                mob = monster_create( id, x, y)
+                on_remove(ch, function() monster_remove(mob) end)
                 on_death(mob, function() maggotskilled = maggotskilled+1 end)
             end
             say("Ok, Do you see the maggots all over here?\n"..
@@ -85,7 +85,7 @@ local function bartenderTalk(npc, ch)
     end
 
     -- somewhere walking
-    mana.being_say(npc, "I am busy, please wait a second!")
+    being_say(npc, "I am busy, please wait a second!")
     --do_message(npc, ch, "you should not be reading this!")
     --stopRoute(npc, ch)
     --do_message(npc, ch, "Hello!")
@@ -94,16 +94,16 @@ local function bartenderTalk(npc, ch)
 end
 
 local function bartenderWaypointReached(npc)
-    mana.being_say(npc, "bartenderWaypointReached")
-    if mana.posX(npc) == tileToPixel(21) and mana.posY(npc) == tileToPixel(23) then
+    being_say(npc, "bartenderWaypointReached")
+    if posX(npc) == tileToPixel(21) and posY(npc) == tileToPixel(23) then
     -- step down
-        mana.npc_warp(npc, tileToPixel(22), tileToPixel(53))
+        npc_warp(npc, tileToPixel(22), tileToPixel(53))
         gotoNextWaypoint(npc)
-    elseif mana.posX(npc) == tileToPixel(22) and mana.posY(npc) == tileToPixel(53) then
+    elseif posX(npc) == tileToPixel(22) and posY(npc) == tileToPixel(53) then
     --step up
-        mana.npc_warp(npc, tileToPixel(21), tileToPixel(21))
+        npc_warp(npc, tileToPixel(21), tileToPixel(21))
         gotoNextWaypoint(npc)
-    elseif mana.posX(npc) == tileToPixel(22) and mana.posY(npc) == tileToPixel(57) then
+    elseif posX(npc) == tileToPixel(22) and posY(npc) == tileToPixel(57) then
     -- end point in basement reached:
         -- wait a certain time until the player talks to me, else leave
         if barTenderWaitingInBasement == false then
@@ -113,7 +113,7 @@ local function bartenderWaypointReached(npc)
             --the player was not here talking to me, so leave again.
             gotoNextWaypoint(npc)
         end
-    elseif mana.posX(npc) == tileToPixel(28) and mana.posY(npc) == tileToPixel(18) then
+    elseif posX(npc) == tileToPixel(28) and posY(npc) == tileToPixel(18) then
     -- usual standing point, do not walk away!
     else
     -- any other waypoint:
@@ -123,9 +123,9 @@ end
 
 
 
-local bar_tender = create_npc("Bar Tender", 216, GENDER_MALE,
-                               tileToPixel(28), tileToPixel(18),
-                               bartenderTalk, nil)
+local bar_tender = npc_create("Bar Tender", 216, GENDER_MALE,
+                              tileToPixel(28), tileToPixel(18),
+                              bartenderTalk, nil)
 
 local bar_tender_way = {
     --first part (way down)
