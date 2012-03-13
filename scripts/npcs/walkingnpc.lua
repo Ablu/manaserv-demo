@@ -65,9 +65,8 @@ function gotoNextWaypoint(npc)
     assert(waypoints[npc] ~= nil, "nil npc handle")
     local wp = waypoints[npc]
     wp.currentIndex = (wp.currentIndex % #wp.data) + 1
-    mana.being_walk(npc, wp.data[wp.currentIndex].x, wp.data[wp.currentIndex].y,
-                    mana.being_get_modified_attribute(npc,
-                                                      ATTRIBUTE_MOVEMENT_SPEED))
+    being_walk(npc, wp.data[wp.currentIndex].x, wp.data[wp.currentIndex].y,
+                    being_get_modified_attribute(npc, ATTRIBUTE_MOVEMENT_SPEED))
     gotoWaypoint(npc)
 end
 
@@ -108,8 +107,6 @@ function continueRoute(npc, ch)
         end
     end
 
-    being_walk(npc, wp.data[wp.currentIndex].x, wp.data[wp.currentIndex].y,
-                being_get_modified_attribute(npc, ATTRIBUTE_MOVEMENT_SPEED))
     gotoWaypoint(npc)
 end
 
