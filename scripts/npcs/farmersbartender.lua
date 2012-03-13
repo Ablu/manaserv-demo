@@ -4,7 +4,6 @@
 
 --]]
 
-
 require "scripts/npcs/walkingnpc"
 
 local bartenderNeedsWater = 0
