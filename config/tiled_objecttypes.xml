@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objecttypes>
+ <objecttype name="warp" color="#0000a4"/>
+ <objecttype name="particle_effect" color="#eaff00"/>
+ <objecttype name="spawn" color="#ff0004"/>
+ <objecttype name="script" color="#44ff00"/>
+</objecttypes>
