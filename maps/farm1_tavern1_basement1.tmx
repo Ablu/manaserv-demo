@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map SYSTEM "http://mapeditor.org/dtd/1.0/map.dtd">
 <map version="1.0" orientation="orthogonal" width="50" height="55" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="woodland_indoor" tilewidth="32" tileheight="32">
   <image source="../tilesets/woodland_indoor.png" width="512" height="512"/>
@@ -40,11 +41,11 @@
     <property name="FILENAME" value="scripts/maps/farm1_tavern1_basement1.lua"/>
    </properties>
   </object>
-  <object x="608" y="640" width="320" height="416">
+  <object name="Maggots" type="spawn" x="608" y="640" width="320" height="416">
    <properties>
-    <property name="MAX_BEINGS" value="2"/>
-    <property name="MONSTER_ID" value="0"/>
-    <property name="SPAWN_RATE" value="1"/>
+    <property name="MAX_BEINGS" value="7"/>
+    <property name="MONSTER_ID" value="1"/>
+    <property name="SPAWN_RATE" value="2"/>
    </properties>
   </object>
  </objectgroup>
