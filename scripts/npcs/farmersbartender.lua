@@ -13,7 +13,7 @@ local function bartenderTalk(npc, ch)
     -- on the way -> don't interrupt me!
     -- in the cellar -> I'll talk to you!
     local function say(message)
-        do_message(npc, ch, message)
+        npc_message(npc, ch, message)
     end
 
     say("Welcome on our farm!")
@@ -27,14 +27,14 @@ local function bartenderTalk(npc, ch)
                  gossipstrings[math.random(#gossipstrings)],
                  queststrings[math.random(#queststrings)] }
 
-    if get_quest_var(ch, "bartenderNeedsWater") == "true" then
+    if chr_get_quest(ch, "bartenderNeedsWater") == "true" then
         table.insert(choices, 1, "I have a bottle of water!")
         waterquest = #choices
     end
 
     table.insert(choices, leavestrings[math.random(#leavestrings)])
 
-    res = do_choice(npc, ch, choices)
+    res = npc_choice(npc, ch, choices)
 
     if res == 1 then
         local buycase = npc_trade(npc, ch, false,
@@ -61,7 +61,7 @@ local function bartenderTalk(npc, ch)
             "It's about cleaning our basement again. \n " ..
             "So Hungori started already, maybe you should go down in the basement! \n" ..
             "Are you ready?\n")
-        res = do_choice(npc, ch, "Erm? I'll have a look there!", "Cleaning! Are you fucking kidding me?")
+        res = npc_choice(npc, ch, "Erm? I'll have a look there!", "Cleaning! Are you fucking kidding me?")
     elseif res > 0 then
         if res == waterquest then
             say("Very kind of you to help me with the water for my flower")

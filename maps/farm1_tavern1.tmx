@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="55" height="45" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="woodland_indoor" tilewidth="32" tileheight="32">
+  <image source="../tilesets/woodland_indoor.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="257" name="woodland_indoor_x2" tilewidth="32" tileheight="64">
+  <image source="../tilesets/woodland_indoor_x2.png" width="512" height="64"/>
+ </tileset>
+ <tileset firstgid="273" name="woodland_indoor_x3" tilewidth="32" tileheight="96">
+  <image source="../tilesets/woodland_indoor_x3.png" width="512" height="96"/>
+ </tileset>
+ <tileset firstgid="289" name="collision" tilewidth="32" tileheight="32">
+  <image source="../tilesets/collision.png" trans="000000" width="64" height="32"/>
+ </tileset>
+ <layer name="Ground" width="55" height="45">
+  <data encoding="base64" compression="zlib">
+   eJzt08EJwzAMhWE7GzgbJJ0gO7SdoO0EafcfoTr4YIwUanCRA//hAyEIvBfkLYSwAQAAAMAfxGwqZu9MvaRsLmbvTL0sCu9MrazbW7NLMcfKNED+Iynot7cqUmUeIP8R6/a0bme7U+32rG5XcRP34hvv/L90K0Vj/xBP8ar+w6isd6Xtd/EWnxN3W4y9xjt/a7cW3vl79PfOAAAAAAAAYPkCnbPQOw==
+  </data>
+ </layer>
+ <layer name="Fringe" width="55" height="45">
+  <data encoding="base64" compression="zlib">
+   eJzt0b0JAkEUReEVzQQVDIXdrUCtxRIswVZsQW3EBkzMDVRMV9TYG0wgOIHovHkg54PDwv7AHbYoAAAAAMDGzHuAobn3AEMLNWx5r7DX1hk7f3jOfegSebbLvCWlozqFzqrUv6tUHf7hwW3Z727qHnpEni/zzkmiG64rtVabyDuNumZb9J2e6qvBy73Rh99u089JqlSVqp13WBiriZp6DwEAAAAAAMCbJ371E7M=
+  </data>
+ </layer>
+ <layer name="Over" width="55" height="45">
+  <data encoding="base64" compression="zlib">
+   eJztzrEJgDAQhtFUguPo0m7hDpEM5JVWwSLhCLwHP1xxxVcKAADAfHd2wERbbM+OgNA+95VWwUg19mRHwGKOH+v9re7MDgAAAADoeAHvPgb9
+  </data>
+ </layer>
+ <layer name="Collision" width="55" height="45" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJzt0gEGwDAQBMD0K/n/I6u0RIUTbV0Ts4wQwq1L3UqpAAAAcDrSnitpkz3Ll91m7dfLdR+9y579Sbco2bO/tbfZet3/12p763UbSfbsIx1X7RbtFQAAAOCPdqipR4E=
+  </data>
+ </layer>
+ <objectgroup name="Objects" width="55" height="45">
+  <object name="particles/fireplace.particle.xml" type="particle_effect" x="1024" y="608" width="32" height="32"/>
+  <object name="to farm1" type="warp" x="928" y="800" width="32" height="32">
+   <properties>
+    <property name="dest_map" value="farm1"/>
+    <property name="dest_x" value="2192"/>
+    <property name="dest_y" value="1136"/>
+   </properties>
+  </object>
+  <object name="to tavern basement" type="warp" x="672" y="736" width="32" height="32">
+   <properties>
+    <property name="dest_map" value="farm1_tavern1_basement1"/>
+    <property name="dest_x" value="688"/>
+    <property name="dest_y" value="656"/>
+   </properties>
+  </object>
+  <object name="External Map Events" type="SCRIPT" x="32" y="32" width="128" height="32">
+   <properties>
+    <property name="FILENAME" value="scripts/maps/farm1_tavern1.lua"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

@@ -1,6 +1,6 @@
 --[[
 
-    The starting map.
+    Storagemap of farm1.
 
 --]]
 

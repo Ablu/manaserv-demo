@@ -8,8 +8,7 @@ require "scripts/npcs/walkingnpc"
 
 local function dumbFarmerTalk(npc, ch)
     stopRoute(npc, ch)
-    do_message(npc, ch, "Hello!")
-    do_choice(npc, ch, "Hi!") -- TODO let it here until bjorn fixed the do_message to be synchronous
+    npc_message(npc, ch, "Hello!")
     continueRoute(npc, ch)
 end
 

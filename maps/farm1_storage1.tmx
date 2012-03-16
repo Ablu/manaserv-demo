@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="50" height="50" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="woodland_indoor" tilewidth="32" tileheight="32">
+  <image source="../tilesets/woodland_indoor.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="257" name="woodland_indoor_x2" tilewidth="32" tileheight="64">
+  <image source="../tilesets/woodland_indoor_x2.png" width="512" height="64"/>
+ </tileset>
+ <tileset firstgid="273" name="woodland_indoor_x3" tilewidth="32" tileheight="96">
+  <image source="../tilesets/woodland_indoor_x3.png" width="512" height="96"/>
+ </tileset>
+ <tileset firstgid="289" name="collision" tilewidth="32" tileheight="32">
+  <image source="../tilesets/collision.png" trans="000000" width="64" height="32"/>
+ </tileset>
+ <layer name="Ground" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt1rENgDAMRNHABmEDyATZfzka01gKkkNxivnFk9v7QkjppZQOAAAA4Lc2Z7er3hVVncOuelfUOaDeFXU5za5619eOh3oXHXSojRpW68jyPTJ2+PeJetdsR3XUu2Y7sr1LVv8/6AAAAAAA4N0NKV/WkA==
+  </data>
+ </layer>
+ <layer name="Fringe" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztzzEKg0AURdGZSkkdsy937hIUVxDcQH66YGGhEz7IOXD790oBAAC4jy7qoyl7yEnjT19z3pRL9j+gtSVas0c08I627BHA3zyyBzQ01FKe0atmLwEAAAA49gGADAea
+  </data>
+ </layer>
+ <layer name="Over" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztzrEJACAMAMGs5AoO7C7iQloLdkKK3MH3HwEAAABUMU8re+KTkT1QWM8e4KldAQAAAEA1GwprA1k=
+  </data>
+ </layer>
+ <objectgroup name="Objects" width="50" height="50">
+  <object name="To Outside" type="warp" x="704" y="736" width="32" height="32">
+   <properties>
+    <property name="dest_map" value="farm1"/>
+    <property name="dest_x" value="2448"/>
+    <property name="dest_y" value="1424"/>
+   </properties>
+  </object>
+  <object name="External Map Events" type="SCRIPT" x="32" y="32" width="128" height="32">
+   <properties>
+    <property name="FILENAME" value="scripts/maps/farm1_storage1.lua"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <layer name="Collision" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt07EJACAMRUFdxf2HFLsUYmMRIycctv+Bjt7aAAAA4DnrxLuqeLK33GzXkW+3XUd+w0/vSke+qrt1vO23/6EDAAAAzibbqEyQ
+  </data>
+ </layer>
+</map>

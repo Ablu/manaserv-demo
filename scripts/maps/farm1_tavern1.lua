@@ -1,6 +1,6 @@
 --[[
 
-    The starting map.
+    Tavern of farm1
 
 --]]
 

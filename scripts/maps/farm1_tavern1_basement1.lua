@@ -1,6 +1,6 @@
 --[[
 
-    A dumb farmer.
+    Maggot fighting in tavern basement
 
 --]]
 
@@ -8,7 +8,7 @@ require "scripts/npcs/walkingnpc"
 
 local function hungoriTalk(npc, ch)
     stopRoute(npc, ch)
-    mana.npc_message(npc, ch, "Hi")
+    npc_message(npc, ch, "Hi")
 
     say("Hi, I am Hungory!")
     local gossipstrings = { "Any good story?", "What do I need to know as an adventurer?", "Any gossip?", "What's up?", "How are you?"}
@@ -19,7 +19,7 @@ local function hungoriTalk(npc, ch)
                  queststrings[math.random(#queststrings)],
                  leavestrings[math.random(#leavestrings)] }
 
-    res = do_choice(npc, ch, choices)
+    res = npc_choice(npc, ch, choices)
 
     if res == 1 then
         say("My game designers should invent more gossip, I could talk about!")
