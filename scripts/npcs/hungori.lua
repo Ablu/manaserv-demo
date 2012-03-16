@@ -1,6 +1,6 @@
 --[[
 
-    The starting map.
+    Hungori, a maggot hunter in the basement of the tavern
 
 --]]
 
@@ -9,7 +9,7 @@ require "scripts/npcs/walkingnpc"
 
 local function hungoriTalk(npc, ch)
     local function getNumberOfMobs()
-        local beings = get_beings_in_rectangle(16, 16, 16, 16)
+        local beings = get_beings_in_rectangle(tileToPixel(16), tileToPixel(16), tileToPixel(16), tileToPixel(16))
         local mobcount=0
         for i=1,#beings do
             if being_type(beings[i]) == TYPE_MONSTER then
@@ -30,10 +30,10 @@ local function hungoriTalk(npc, ch)
     local queststrings  = { "May I help you? I am looking for adventurers work.", "Do you have a quest for me?", "Can I assist you in adventuring the world?", "I am a strong adventurer..."}
     local leavestrings  = { "Nevermind", "Bye", "See you", "I need to go.", "Have a nice day!"}
 
-    choices =  { gossipstrings[math.random(#gossipstrings)],
+    local choices =  { gossipstrings[math.random(#gossipstrings)],
                  queststrings[math.random(#queststrings)] }
 
-    maggotquest=0
+    local maggotquest=0
     if chr_get_quest(ch, "HungoriMaggots") == "Hunting" then
         table.insert(choices, 3, "I cannot see any maggots any more!")
         maggotquest = #choices
@@ -41,13 +41,13 @@ local function hungoriTalk(npc, ch)
 
     table.insert(choices, leavestrings[math.random(#leavestrings)])
 
-    res = npc_choice(npc, ch, choices)
+    local res = npc_choice(npc, ch, choices)
 
     if res == 1 then
         say("My game designers should invent more gossip, I could talk about!")
     elseif res == 2 then
         for i=1,10-getNumberOfMobs() do
-            mob = monster_create("Maggot", 21, 25)
+            local mob = monster_create("Maggot",tileToPixel(21),tileToPixel(25))
             on_remove(ch, function() monster_remove(mob) end)
             on_death(mob, function() being_say(npc, "Whoot!") end)
         end
