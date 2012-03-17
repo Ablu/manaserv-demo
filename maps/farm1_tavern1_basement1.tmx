@@ -43,9 +43,9 @@
   </object>
   <object name="Maggots" type="spawn" x="608" y="640" width="320" height="416">
    <properties>
-    <property name="MAX_BEINGS" value="7"/>
+    <property name="MAX_BEINGS" value="15"/>
     <property name="MONSTER_ID" value="1"/>
-    <property name="SPAWN_RATE" value="2"/>
+    <property name="SPAWN_RATE" value="3"/>
    </properties>
   </object>
  </objectgroup>
