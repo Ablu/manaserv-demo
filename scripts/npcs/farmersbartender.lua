@@ -30,7 +30,7 @@ local function bartenderTalk(npc, ch)
                  queststrings[math.random(#queststrings)] }
 
     if chr_get_quest(ch, "bartenderNeedsWater") == "true" then
-        table.insert(choices, 1, "I have a bottle of water!")
+        table.insert(choices, 4, "I have a bottle of water!")
         waterquest = #choices
     end
 
