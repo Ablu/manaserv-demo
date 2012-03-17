@@ -62,6 +62,6 @@ function lookForEnemy(npc)
         end
     else
         local x, y = posX(closestBeing), posY(closestBeing)
-        being_walk(npc, x, y, 6) --being_get_modified_attribute(npc, ATTRIBUTE_MOVEMENT_SPEED)
+        being_walk(npc, x, y, being_get_modified_attribute(npc, ATTRIBUTE_MOVEMENT_SPEED))
     end
 end
