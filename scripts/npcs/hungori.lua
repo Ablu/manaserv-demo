@@ -90,28 +90,30 @@ local function hungoriUpdate(npc)
 
     if timer > 10 then
         timer = 0
-        if getNumberOfMobs() > 7 then
-            guard.lookForEnemy(npc)
-        end
+        --if getNumberOfMobs() > 7 then
+            --guard.lookForEnemy(npc)
+        --end
     else
         timer = timer + 1
     end
 end
 
 local hungoriWay = {
-        {x=tileToPixel(21), y=tileToPixel(26), wait=5},
-        {x=tileToPixel(20), y=tileToPixel(30)},
-        {x=tileToPixel(26), y=tileToPixel(28)},
-        {x=tileToPixel(22), y=tileToPixel(27)} }
+        {x=tileToPixel(21), y=tileToPixel(26), wait=7},
+        {x=tileToPixel(20), y=tileToPixel(30), wait=15},
+        {x=tileToPixel(26), y=tileToPixel(28), wait=32},
+        {x=tileToPixel(22), y=tileToPixel(27), wait=17} }
 
 
 local hungori = npc_create("Hungori", 217, GENDER_MALE,
                            tileToPixel(21), tileToPixel(26),
                            hungoriTalk, hungoriUpdate)
 
-guard.create(hungori, posX(hungori), posY(hungori),
-             5 * 32, 50, 25, 2 * 32, 999, DAMAGE_PHYSICAL,
-             ELEMENT_NEUTRAL, function(npc, b) return npc ~= b end)
+being_set_base_attribute(hungori, ATTRIBUTE_MOVEMENT_SPEED, 5)
 
---setWaypoints(hungori, hungoriWay, 3, hungoriWaypointReached)
---gotoNextWaypoint(hungori)
+--guard.create(hungori, posX(hungori), posY(hungori),
+--             5 * 32, 50, 25, 16, 999, DAMAGE_PHYSICAL,
+--             ELEMENT_NEUTRAL, nil, nil)
+
+setWaypoints(hungori, hungoriWay, 2, hungoriWaypointReached)
+gotoNextWaypoint(hungori)
