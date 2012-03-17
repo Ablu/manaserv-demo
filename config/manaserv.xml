@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <configuration>
  <option name="sqlite_database" value="mana.db"/>
- <option name="serverPath" value="." />
+ <option name="serverPath" value="../manaserv/" />
  <option name="worldDataPath" value="." />
  <option name="log_statisticsFile" value="./manaserv.stats"/>
  <option name="log_accountServerFile" value="./manaserv-account.log"/>
