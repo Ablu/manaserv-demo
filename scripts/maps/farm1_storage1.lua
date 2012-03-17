@@ -5,6 +5,6 @@
 --]]
 
 atinit(function()
-    --require "scripts/npcs/farmersbartender"
+    require "scripts/npcs/jimmy"
 end)
 

@@ -32,4 +32,11 @@
        <sprite>equipment/legs/chaps-male.xml</sprite>
        <sprite>equipment/chest/cotton-male.xml|#222255,6666ff</sprite>
     </npc>
+
+    <npc id="218">   <!--  worker in storage -->
+       <sprite>races/humans/human_male_base.xml</sprite>
+       <sprite>hairstyles/combed_back.png|#F2EA63</sprite>
+       <sprite>equipment/legs/chaps-male.xml</sprite>
+       <sprite>equipment/chest/cotton-male.xml|#580008</sprite>
+    </npc>
 </npcs>
