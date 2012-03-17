@@ -11,23 +11,35 @@ local function jimmyTalk(npc, ch)
         npc_message(npc, ch, message)
     end
 
-    say("Hello! Can you give me a hand?")
+    local bottles_sum = tonumber(chr_get_quest(ch, "JimmyBottles"))
+    if (bottles_sum == nil) then
+        bottles_sum = 0
+    end
 
-    choices =  { "Sure, what do you need?",
-                 "Nah, I'm busy." }
+    if (bottles_sum > 20) then
+        say("Hi! Thanks for bringing out the bottles.")
+    else
+        say("Hello! Can you give me a hand?")
 
-    res = npc_choice(npc, ch, choices)
+        local choices =  { "Sure, what do you need?",
+                     "Nah, I'm busy." }
 
-    if res == 1 then
-        say("I'm tidying up our storage here. This is trash, please bring it outside.")
-        chr_inv_change(ch, "Empty Bottle", math.random(4)+1)
-    elseif res == 2 then
-        say("Then don't stand in my way!")
+        local res = npc_choice(npc, ch, choices)
+
+        if res == 1 then
+            say("I'm tidying up our storage here. This is trash, please bring it outside.")
+            local bottles_amount = math.random(4)+1
+            chr_inv_change(ch, "Empty Bottle", bottles_amount)
+            bottles_sum = bottles_sum + bottles_amount
+            chr_set_quest(ch, "JimmyBottles", tostring(bottles_sum))
+        elseif res == 2 then
+            say("Then don't stand in my way!")
+        end
     end
 end
 
 local jimmy = npc_create("Jimmy", 218, GENDER_MALE,
-                              tileToPixel(28), tileToPixel(18),
+                              tileToPixel(27), tileToPixel(29),
                               jimmyTalk, nil)
 
 local jimmy_way = {
