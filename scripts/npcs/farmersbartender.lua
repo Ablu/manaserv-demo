@@ -16,6 +16,8 @@ local function bartenderTalk(npc, ch)
         npc_message(npc, ch, message)
     end
 
+    stopRoute(npc, ch)
+
     say("Welcome on our farm!")
     local tradestrings  = { "Do you have some beer?", "I need some tools...", "Interested in doing a deal?", "Show me your stuff", "Would you mind selling me some stuff?" }
     local gossipstrings = { "Any good story?", "What do I need to know as an adventurer?", "Any gossip?", "What's up?"}
@@ -54,20 +56,20 @@ local function bartenderTalk(npc, ch)
             say("I need a bottle of water to keep my flowers alive. Could you bring me a bottle of water?")
             chr_set_quest(ch, "bartenderNeedsWater", "true")
             bartenderNeedsWater = bartenderNeedsWater - 1
-            return
+        else
+            say("Actually there is something you can do: \n" ..
+                "It's about cleaning our basement again. \n " ..
+                "So Hungori started already, maybe you should go down in the basement! \n" ..
+                "Are you ready?\n")
+            res = npc_choice(npc, ch, "Erm? I'll have a look there!", "Cleaning! Are you fucking kidding me?")
         end
-
-        say("Actually there is something you can do: \n" ..
-            "It's about cleaning our basement again. \n " ..
-            "So Hungori started already, maybe you should go down in the basement! \n" ..
-            "Are you ready?\n")
-        res = npc_choice(npc, ch, "Erm? I'll have a look there!", "Cleaning! Are you fucking kidding me?")
     elseif res > 0 then
         if res == waterquest then
             say("Very kind of you to help me with the water for my flower")
             chr_give_exp(ch, "Farming", 1)
         end
     end
+    continueRoute(npc, ch)
 end
 
 

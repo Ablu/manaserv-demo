@@ -46,7 +46,6 @@ end
 function gotoWaypoint(npc)
     local wp = waypoints[npc]
 
-    wp.currentIndex = (wp.currentIndex % #wp.data) + 1
     being_walk(npc, wp.data[wp.currentIndex].x, wp.data[wp.currentIndex].y,
                being_get_modified_attribute(npc, ATTRIBUTE_MOVEMENT_SPEED))
 
@@ -65,8 +64,6 @@ function gotoNextWaypoint(npc)
     assert(waypoints[npc] ~= nil, "nil npc handle")
     local wp = waypoints[npc]
     wp.currentIndex = (wp.currentIndex % #wp.data) + 1
-    being_walk(npc, wp.data[wp.currentIndex].x, wp.data[wp.currentIndex].y,
-                    being_get_modified_attribute(npc, ATTRIBUTE_MOVEMENT_SPEED))
     gotoWaypoint(npc)
 end
 
@@ -116,16 +113,16 @@ end
 -- This also handles the user callback
 function walkingCallback(npc)
     local wp = waypoints[npc]
-    -- check if the npc already reched the waypoint.
-    -- This may be not the case, if the npc was hindered by players to walk there.
-    if wp.data[wp.currentIndex].x == posX(npc) and wp.data[wp.currentIndex].y == posY(npc) then
-        if not next(wp.stoppedBy) then
-            -- In case the npc is being talked to at the moment, we will drop,
-            -- this current callback, since it will be rescheduled again after talking is finished.
+    -- In case the npc is being talked to at the moment, we will drop,
+    -- this current callback, since it will be rescheduled again after talking is finished.
+    if not next(wp.stoppedBy) then
+        if wp.data[wp.currentIndex].x == posX(npc) and wp.data[wp.currentIndex].y == posY(npc) then
+            -- check if the npc already reched the waypoint.
+            -- This may be not the case, if the npc was hindered by players to walk there.
             wp.callback(npc, wp.data[wp.currentIndex].id)
+        else
+            -- if the  npc is not there, just try again to walk to the destination.
+            gotoWaypoint(npc)
         end
-    else
-        -- if the  npc is not there, just try again to walk to the destination.
-        gotoWaypoint(npc)
     end
 end

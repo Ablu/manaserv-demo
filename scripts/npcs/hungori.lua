@@ -26,7 +26,7 @@ local function hungoriTalk(npc, ch)
         npc_message(npc, ch, message)
     end
 
-    --stopRoute(npc, ch)
+    stopRoute(npc, ch)
 
     say("Hi, I am Hungory!")
     local gossipstrings = { "Any good story?", "What do I need to know as an adventurer?", "Any gossip?", "What's up?", "How are you?"}
@@ -67,7 +67,7 @@ local function hungoriTalk(npc, ch)
         end
     end
 
-    --continueRoute(npc, ch)
+    continueRoute(npc, ch)
 end
 
 local function hungoriWaypointReached(npc)
