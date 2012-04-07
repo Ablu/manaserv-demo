@@ -66,7 +66,7 @@ local function bartenderTalk(npc, ch)
     elseif res > 0 then
         if res == waterquest then
             say("Very kind of you to help me with the water for my flower")
-            chr_give_exp(ch, "Farming", 1)
+            chr_give_exp(ch, "Crafts_Farming", 1)
         end
     end
     continueRoute(npc, ch)
