@@ -1,3 +1,5 @@
 TODO list what is needed for the demo
 
 - sound for water pump (implement script bindings for playing sound first)
+- Warning: Failed to load particles/levelup.particle.xml
+- Error loading particle: particles/warparea.particle.xml
